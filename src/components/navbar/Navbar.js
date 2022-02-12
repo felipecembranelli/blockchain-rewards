@@ -17,6 +17,7 @@ import emptyCartSvg from "../../images/empty_cart.svg"
 import { removeFromCart } from "../../actions/cartActions"
 
 import "./Navbar.css"
+import Web3Wrapper from "../web3Wrapper/web3Wrapper"
 
 const NavBar = props => {
   const [isOpen, setIsOpen] = useState(false)
@@ -31,6 +32,11 @@ const NavBar = props => {
         </Link>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
+            <NavItem>
+              <Link to="/" className="nav-link">
+                <Web3Wrapper />
+              </Link>
+            </NavItem>
             <NavItem>
               <Link to="/" className="nav-link">
                 Contact
