@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import {useState} from 'react'
 //import {ethers} from 'ethers'
 import Web3 from 'web3'
+import DaiToken from '../../abis/DaiToken.json'
 
 class Web3Wrapper extends Component {
 
@@ -15,13 +16,16 @@ class Web3Wrapper extends Component {
 			defaultAccount: '',
 			currentNetworkType: '',
 			userBalance: 0,
-			btnConnectState: false,
-			showAlert: false
+			showAlert: false,
+			daiTokenBalance: '0',
 		};  
 	}
 
-	componentDidMount() {
+	
+	async componentDidMount() {
 		this.connectWalletHandler();
+
+		//await this.checkDAIBalance()
 
 		try {
 			window.ethereum.on('chainChanged', this.chainChangedHandler);
@@ -33,16 +37,39 @@ class Web3Wrapper extends Component {
 		}
 	}
 
+	async componentWillMount() {
+
+		// if (window.ethereum) {
+		// 	window.web3 = new Web3(window.ethereum)
+		// 	await window.ethereum.enable()
+		//   }
+		//   else if (window.web3) {
+		// 	window.web3 = new Web3(window.web3.currentProvider)
+		//   }
+		//   else {
+		// 	window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+		//   }
+
+		// const web3 = window.web3
+
+		// const networkId = await web3.eth.net.getId()
+
+    	//console.log("componentWillMount - networkId:" + networkId)
+
+
+		await this.checkDAIBalance()
+	}
+
 
 	/**
 	 * @desc Verify if the user is connected to Kovan network
 	*/ 
-	isKovanNetwork(chainID){
-		if (chainID===42)
-			return true;
-		else
-			return false;
-	}
+	// isKovanNetwork(chainID){
+	// 	if (chainID===42)
+	// 		return true;
+	// 	else
+	// 		return false;
+	// }
 
 	/**
 	 * @desc Show error message
@@ -53,12 +80,95 @@ class Web3Wrapper extends Component {
 		this.setState({showAlert: true});
 	}
 
+		/**
+	 * @desc Check balance of user current account
+	*/
+	async checkDAIBalance() {
+
+		console.log("checking DAI balance");
+
+		// if ((typeof address === 'undefined') || (address === null)){
+		// 	this.setError("Account address not defined.");
+		// 	return;
+		// }
+
+		try {
+			if (window.ethereum) {
+				window.web3 = new Web3(window.ethereum)
+				await window.ethereum.enable()
+			  }
+			  else if (window.web3) {
+				window.web3 = new Web3(window.web3.currentProvider)
+			  }
+			  else {
+				window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+			  }
+	
+			const web3 = window.web3
+	
+			const accounts = await web3.eth.getAccounts()
+			this.setState({ account: accounts[0] })
+		
+			const networkId = await web3.eth.net.getId()
+
+			console.log("componentWillMount - networkId:" + networkId)
+
+			//if(address !== null && address !== '') {    
+				//const web3 = new Web3(window.ethereum);
+				//const web3 = window.web3;
+
+				// web3.eth.getBalance(address).then(async (balanceInWei) => {
+				// 	const balance = web3.utils.fromWei(balanceInWei);
+
+				// 	console.log("Balance in wei:", balanceInWei);
+				// 	console.log("Balance in ETH:", balance);
+
+					//this.setState({userBalance: balance});
+
+					//const networkId = await web3.eth.net.getId()
+
+					// web3.eth.net.getId()
+					// .then(networkId => {
+					// 	this.setState({currentNetworkId: networkId});
+					// 	//this.btnConnectState=this.isKovanNetwork(networkId);
+					// });
+
+					// console.log("Network detected:", this.state.currentNetworkId);
+
+					// Load DaiToken
+					const daiTokenData = DaiToken.networks[networkId]
+
+					if (daiTokenData) {
+						const daiToken = new web3.eth.Contract(DaiToken.abi, daiTokenData.address)
+						
+						this.setState({ daiToken })
+
+						let daiTokenBalance = await daiToken.methods.balanceOf(this.state.account).call()
+
+						this.setState({ daiTokenBalance: daiTokenBalance.toString() })
+
+						console.log("Calculating DAI balance:", daiTokenBalance.toString());
+
+					} 
+					else {
+						window.alert('DaiToken contract not deployed to detected network.')
+					}
+				//});
+			//}
+		} catch (error) {
+			console.log(error.message)
+		}
+
+		console.log("Balance in ETH:", this.userBalance);
+	}
+
+
 	/**
 	 * @desc Check balance of user current account
 	*/
 	checkBalance(address) {
 
-		console.log("checking balance");
+		console.log("checking general balance");
 
 		if ((typeof address === 'undefined') || (address === null)){
 			this.setError("Account address not defined.");
@@ -66,16 +176,19 @@ class Web3Wrapper extends Component {
 		}
 
 		try {
-			const web3 = new Web3(window.ethereum);
 
-			web3.eth.getBalance(address).then((balanceInWei) => {
-				const balance = web3.utils.fromWei(balanceInWei);
+			if(address !== null && address !== '') {    
+				const web3 = new Web3(window.ethereum);
 
-				console.log("Balance in wei:", balanceInWei);
-				console.log("Balance in ETH:", balance);
+				web3.eth.getBalance(address).then((balanceInWei) => {
+					const balance = web3.utils.fromWei(balanceInWei);
 
-				this.setState({userBalance: balance});
-			});
+					console.log("Balance in wei:", balanceInWei);
+					console.log("Balance in ETH:", balance);
+
+					this.setState({userBalance: balance});
+				});
+			}
 		} catch (error) {
 			this.setError(error.message);
 		}
@@ -91,7 +204,7 @@ class Web3Wrapper extends Component {
 		web3.eth.net.getId()
 		.then(networkId => {
 			this.setState({currentNetworkId: networkId});
-			this.btnConnectState=this.isKovanNetwork(networkId);
+			//this.btnConnectState=this.isKovanNetwork(networkId);
 		});
 
 		web3.eth.net.getNetworkType()
@@ -129,6 +242,8 @@ class Web3Wrapper extends Component {
 				this.setState({defaultAccount: result[0]});
 
 				this.getCurrentNetwork();
+
+				console.log("Network detected (1):", this.state.currentNetworkId);
 
 				this.checkBalance(result[0]);
 
@@ -168,7 +283,10 @@ class Web3Wrapper extends Component {
 	
 	render() {
 	return (
-		<div>Account({this.getReadableAccount(this.state.defaultAccount)})</div>
+		<div>
+			<div>Account({this.getReadableAccount(this.state.defaultAccount)})</div>
+			<div>{this.state.daiTokenBalance} mDAI</div>
+		</div>
 	);
 	}
 }
