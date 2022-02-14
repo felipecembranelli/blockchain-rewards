@@ -43,7 +43,7 @@ function ShoppingCart(props) {
                             <h5>{item.name}</h5>
                           </Link>
                         </td>
-                        <td className="p-price first-row">Ksh. {item.price}</td>
+                        <td className="p-price first-row">{item.price} mDAI</td>
                         <td className="qua-col first-row">
                           <div className="quantity">
                             <div className="pro-qty">
@@ -73,7 +73,7 @@ function ShoppingCart(props) {
                           </div>
                         </td>
                         <td className="total-price first-row">
-                          Ksh {item.price * item.quantity}
+                          {item.price * item.quantity} mDAI
                         </td>
                         <td className="close-td first-row">
                           <i
@@ -128,10 +128,10 @@ function ShoppingCart(props) {
                     <div className="proceed-checkout">
                       <ul style={{ marginInlineStart: "0px" }}>
                         <li className="subtotal">
-                          Subtotal <span>Ksh {props.total}</span>
+                          Subtotal <span>{props.total} mDAI</span>
                         </li>
                         <li className="cart-total">
-                          Total <span>Ksh {props.total}</span>
+                          Total <span>{props.total} mDAI</span>
                         </li>
                       </ul>
                       <Link href="/checkout" className="proceed-btn">

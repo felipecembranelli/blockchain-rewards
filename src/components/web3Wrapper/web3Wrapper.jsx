@@ -18,17 +18,18 @@ class Web3Wrapper extends Component {
 			userBalance: 0,
 			showAlert: false,
 			daiTokenBalance: '0',
+			daiToken: {},
 		};  
 	}
 
 	
 	async componentDidMount() {
-		this.connectWalletHandler();
+		//this.connectWalletHandler();
 
 		//await this.checkDAIBalance()
 
 		try {
-			window.ethereum.on('chainChanged', this.chainChangedHandler);
+			//window.ethereum.on('chainChanged', this.chainChangedHandler);
 
 			window.ethereum.on('accountsChanged', this.accountChangedHandler);
 		}
@@ -57,7 +58,7 @@ class Web3Wrapper extends Component {
     	//console.log("componentWillMount - networkId:" + networkId)
 
 
-		await this.checkDAIBalance()
+		await this.connectWalletHandler()
 	}
 
 
@@ -83,7 +84,7 @@ class Web3Wrapper extends Component {
 		/**
 	 * @desc Check balance of user current account
 	*/
-	async checkDAIBalance() {
+	async connectWalletHandler() {
 
 		console.log("checking DAI balance");
 
@@ -107,7 +108,7 @@ class Web3Wrapper extends Component {
 			const web3 = window.web3
 	
 			const accounts = await web3.eth.getAccounts()
-			this.setState({ account: accounts[0] })
+			this.setState({ defaultAccount: accounts[0] })
 		
 			const networkId = await web3.eth.net.getId()
 
@@ -143,7 +144,7 @@ class Web3Wrapper extends Component {
 						
 						this.setState({ daiToken })
 
-						let daiTokenBalance = await daiToken.methods.balanceOf(this.state.account).call()
+						let daiTokenBalance = await daiToken.methods.balanceOf(this.state.defaultAccount).call()
 
 						this.setState({ daiTokenBalance: daiTokenBalance.toString() })
 
@@ -166,107 +167,111 @@ class Web3Wrapper extends Component {
 	/**
 	 * @desc Check balance of user current account
 	*/
-	checkBalance(address) {
+	// checkBalance(address) {
 
-		console.log("checking general balance");
+	// 	console.log("checking general balance");
 
-		if ((typeof address === 'undefined') || (address === null)){
-			this.setError("Account address not defined.");
-			return;
-		}
+	// 	if ((typeof address === 'undefined') || (address === null)){
+	// 		this.setError("Account address not defined.");
+	// 		return;
+	// 	}
 
-		try {
+	// 	try {
 
-			if(address !== null && address !== '') {    
-				const web3 = new Web3(window.ethereum);
+	// 		if(address !== null && address !== '') {    
+	// 			const web3 = new Web3(window.ethereum);
 
-				web3.eth.getBalance(address).then((balanceInWei) => {
-					const balance = web3.utils.fromWei(balanceInWei);
+	// 			web3.eth.getBalance(address).then((balanceInWei) => {
+	// 				const balance = web3.utils.fromWei(balanceInWei);
 
-					console.log("Balance in wei:", balanceInWei);
-					console.log("Balance in ETH:", balance);
+	// 				console.log("Balance in wei:", balanceInWei);
+	// 				console.log("Balance in ETH:", balance);
 
-					this.setState({userBalance: balance});
-				});
-			}
-		} catch (error) {
-			this.setError(error.message);
-		}
+	// 				this.setState({userBalance: balance});
+	// 			});
+	// 		}
+	// 	} catch (error) {
+	// 		this.setError(error.message);
+	// 	}
 
-		console.log("Balance in ETH:", this.userBalance);
-	}
+	// 	console.log("Balance in ETH:", this.userBalance);
+	// }
 	
 
-	getCurrentNetwork = () => {
+	// getCurrentNetwork = () => {
 
-		const web3 = new Web3(window.ethereum);
+	// 	const web3 = new Web3(window.ethereum);
 
-		web3.eth.net.getId()
-		.then(networkId => {
-			this.setState({currentNetworkId: networkId});
-			//this.btnConnectState=this.isKovanNetwork(networkId);
-		});
+	// 	web3.eth.net.getId()
+	// 	.then(networkId => {
+	// 		this.setState({currentNetworkId: networkId});
+	// 		//this.btnConnectState=this.isKovanNetwork(networkId);
+	// 	});
 
-		web3.eth.net.getNetworkType()
-		.then(networkType => {
-			this.setState({currentNetworkType: networkType});
-		});
-	}
+	// 	web3.eth.net.getNetworkType()
+	// 	.then(networkType => {
+	// 		this.setState({currentNetworkType: networkType});
+	// 	});
+	// }
 
 	/**
 	 * @desc Prompt metamask window
 	*/
-	promptMetamask = async () => {
+	// promptMetamask = async () => {
 
-		console.log('Prompting MetaMask!');
+	// 	console.log('Prompting MetaMask!');
 
-		window.web3 = new Web3(window.ethereum);
-		await window.ethereum.enable();
-	}
+	// 	window.web3 = new Web3(window.ethereum);
+	// 	await window.ethereum.enable();
+	// }
 
 	/**
 	 * @desc Verify if the user has the metamask configured,
 	 * get network information and check account balance.
 	*/
-	connectWalletHandler = () => {
+	// connectWalletHandler = () => {
 
-		if (window.ethereum && window.ethereum.isMetaMask) {
+	// 	if (window.ethereum && window.ethereum.isMetaMask) {
 
-			console.log('MetaMask Here!');
+	// 		console.log('MetaMask Here!');
 
-			window.ethereum.request({ method: 'eth_requestAccounts'})
-			.then(result => {
+	// 		window.ethereum.request({ method: 'eth_requestAccounts'})
+	// 		.then(result => {
 			
-				console.log(result[0]);
+	// 			console.log(result[0]);
 			
-				this.setState({defaultAccount: result[0]});
+	// 			this.setState({defaultAccount: result[0]});
 
-				this.getCurrentNetwork();
+	// 			this.getCurrentNetwork();
 
-				console.log("Network detected (1):", this.state.currentNetworkId);
+	// 			console.log("Network detected (1):", this.state.currentNetworkId);
 
-				this.checkBalance(result[0]);
+	// 			this.checkBalance(result[0]);
 
-			})
-			.catch(error => {
-				this.setError(error.message);
-			});
+	// 		})
+	// 		.catch(error => {
+	// 			this.setError(error.message);
+	// 		});
 
-		} else {
-			this.setError("Need to install MetaMask");
-		}
-	}
+	// 	} else {
+	// 		this.setError("Need to install MetaMask");
+	// 	}
+	// }
 
 	/**
 	 * @desc reload the page to avoid any errors with chain change 
 	 * mid use of application
 	*/
-	chainChangedHandler = () => {
-		window.location.reload();
-	}
+	// chainChangedHandler = () => {
+	// 	window.location.reload();
+	// }
 
 	accountChangedHandler = (newAccount) => {
 		this.setState({defaultAccount: newAccount[0]});
+		
+		console.log("reload");
+		
+		window.location.reload();
 	}
 
   getReadableAccount = (account) => {
