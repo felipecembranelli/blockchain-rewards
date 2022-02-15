@@ -8,20 +8,13 @@ import "./Checkout.css"
 
 import Web3 from 'web3'
 import DaiToken from '../../abis/DaiToken.json'
+import {config} from '../../data/dataConfig'
+import {clearCart} from "../../actions/cartActions"
 
 function Checkout(props) {
 
   const placeOrder = async (amount) => {
     console.log("placeOrder")
-    // console.log("props")
-    // console.log(props)
-    // console.log("props")
-
-    // props.daiToken.methods.approve(props.defaultAccount._address, amount).send({ from: props.defaultAccount }).on('transactionHash', (hash) => {
-    //   props.daiToken.methods.transfer(amount).send({ from: props.defaultAccount }).on('transactionHash', (hash) => {
-    //     this.setState({ loading: false })
-    //   })
-    // })
 
     try {
 			if (window.ethereum) {
@@ -51,27 +44,17 @@ function Checkout(props) {
         if (daiTokenData) {
           const daiToken = new web3.eth.Contract(DaiToken.abi, daiTokenData.address)
           
-          //this.setState({ daiToken })
-
-          //let daiTokenBalance = await daiToken.methods.balanceOf(this.state.defaultAccount).call()
-
-          //this.setState({ daiTokenBalance: daiTokenBalance.toString() })
-
-          //console.log("Calculating DAI balance:", daiTokenBalance.toString());
-
           console.log("checkout - transfer:" + defaultAccount)
 
-          // TODO 
-          // how to store admin account(REDUX?)
-          // how to clean up cart
-          let adminAccount = "0x0f34490876B9f1db7BFc5A4Af4A3eD272d15A501";
+          let adminAccount = config.adminAccount
 
           console.log("checkout - transfer to:" + adminAccount)
 
           daiToken.methods.approve(defaultAccount, amount).send({ from: defaultAccount }).on('transactionHash', (hash) => {
             daiToken.methods.transfer(adminAccount, amount).send({ from: defaultAccount }).on('transactionHash', (hash) => {
-              //this.setState({ loading: false })
               console.log("placed order")
+
+              props.clearCart()
             })
           })
 
@@ -90,9 +73,10 @@ function Checkout(props) {
         <form action="#" className="checkout-form" onSubmit={(event) => {
                 event.preventDefault()
                 let amount
-                //amount = this.input.value.toString()
+                
+                amount = props.total.toString()
                 //amount = window.web3.utils.toWei(amount, 'Ether')
-                placeOrder(10)
+                placeOrder(amount)
               }}>
           <Row className="justify-content-center">
             <Col lg="8">
@@ -166,4 +150,6 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(Checkout)
+const cartActions = { clearCart}
+
+export default connect(mapStateToProps, cartActions)(Checkout)

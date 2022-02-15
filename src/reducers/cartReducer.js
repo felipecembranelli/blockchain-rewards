@@ -2,6 +2,7 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   DECREASE_QUANTITY,
+  CLEAR_CART,
 } from "../actions/types"
 
 const initialState = {
@@ -47,6 +48,12 @@ const cartReducer = (state = initialState, action) => {
         }
       }
       break
+    case CLEAR_CART:
+        return {
+          cartItems: [],
+          total: 0,
+        }
+        break      
     case DECREASE_QUANTITY:
       let item_exist = state.cartItems.find(item => action.item.id === item.id)
 
