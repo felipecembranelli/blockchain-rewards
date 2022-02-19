@@ -18,6 +18,8 @@ import { removeFromCart } from "../../actions/cartActions"
 
 import "./Navbar.css"
 import Web3Wrapper from "../web3Wrapper/web3Wrapper"
+import ListAccountsBalance from "../web3Wrapper/listAccountsBalance"
+
 
 const NavBar = props => {
   const [isOpen, setIsOpen] = useState(false)
@@ -33,10 +35,15 @@ const NavBar = props => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Link to="/" className="nav-link">
+              <Link to="/transactions" className="nav-link">
                 <Web3Wrapper />
               </Link>
             </NavItem>
+            <NavItem>
+              <Link to="/issue-tokens" className="nav-link">
+                Issue Tokens
+              </Link>
+             </NavItem>
             <NavItem>
               <Link to="/" className="nav-link">
                 Contact
