@@ -24,46 +24,47 @@ function IssueTokens(props) {
 				window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
 			  }
 	
-        const web3 = window.web3
+        //const provider = ganache.provider();
+        const web3 = window.web3;
     
-        const accounts = await web3.eth.getAccounts()
+        //const accounts = await web3.eth.getAccounts()
+        const accounts = await web3.eth.requestAccounts().then(console.log)
 
         let defaultAccount = accounts[0]
-        //let account_1 = accounts[1]
-        //let account_2 = accounts[2]
+        let account_1 = accounts[1]
+        let account_2 = accounts[2]
 
-        //console.log(account_1)
-        //console.log(account_2)
+        console.log(defaultAccount)
+        console.log(account_1)
+        console.log(account_2)
       
         const networkId = await web3.eth.net.getId()
 
         console.log("checkout - networkId:" + networkId)
 
         // Load DaiToken
-        const daiTokenData = DaiToken.networks[networkId]
+//        const daiTokenData = DaiToken.networks[networkId]
 
-        if (daiTokenData) {
-          	const daiToken = new web3.eth.Contract(DaiToken.abi, daiTokenData.address)
+        // if (daiTokenData) {
+        //   	const daiToken = new web3.eth.Contract(DaiToken.abi, daiTokenData.address)
 		   
 			// TO DO:get accounts that will earn tokens and tokens qty 
 
-			let account_1_address = "0x75BA556958c7F315b5E178830fb01B1c510040D0"
-			let earned_tokens_1 = '10000'
-			let account_2_address = "0x68aE11Af84ecE5bf49e90904f1e5B8adE1Fb852a"
-			let earned_tokens_2 = '10000'
+			// let account_1_address = "0x75BA556958c7F315b5E178830fb01B1c510040D0"
+			// let earned_tokens_1 = '10000'
+			// let account_2_address = "0x68aE11Af84ecE5bf49e90904f1e5B8adE1Fb852a"
+			// let earned_tokens_2 = '10000'
 
 			// Code goes here: logic to reward accounts...
 			//daiToken.issueTokens(account_1_address, earned_tokens_1) // TO DO: nao esta reconhecendo o metodo
 
 			//await daiToken.issueTokens(account_2_address, earned_tokens_2)
 
-      let adminAccount = config.adminAccount
+      // let adminAccount = config.adminAccount
 
-      //daiToken.methods.approve(defaultAccount, amount).send({ from: defaultAccount }).on('transactionHash', (hash) => {
-        daiToken.methods.transfer(adminAccount, earned_tokens_1).send({ from: defaultAccount }).on('transactionHash', (hash) => {
-          console.log("token issued")
-        })
-      //})
+      //   daiToken.methods.transfer(adminAccount, earned_tokens_1).send({ from: defaultAccount }).on('transactionHash', (hash) => {
+      //     console.log("token issued")
+      //   })
 
 			console.log("Tokens issued!")
 
@@ -82,10 +83,10 @@ function IssueTokens(props) {
         //     })
         //   })
 
-        } 
-        else {
-          window.alert('DaiToken contract not deployed to detected network.')
-        }
+  //      } 
+   //     else {
+    //      window.alert('DaiToken contract not deployed to detected network.')
+     //   }
     } catch (error) {
       console.log(error.message)
     }

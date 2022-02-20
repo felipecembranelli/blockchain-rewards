@@ -261,7 +261,7 @@
           "type": "uint256"
         }
       ],
-      "n4ame": "issueTokens",
+      "name": "issueTokens",
       "outputs": [
         {
           "internalType": "bool",
@@ -7947,12 +7947,12 @@
         }
       },
       "links": {},
-      "address": "0x62a2C29F3D742420a58d65Ac0bbf9dC5Bd49a11F",
-      "transactionHash": "0xfc1e933e450d769899526287be18dffc62f64da0c9bea66ec64b1d1b4dd886f0"
+      "address": "0x769B2d70aBF272393844B69edE8E6432A2827dCE",
+      "transactionHash": "0x7f8cd72d8b41e267f4615648669060471bf08b50c5e4d0a68c3ac380a76b2e5b"
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-18T19:09:10.038Z",
+  "updatedAt": "2022-02-19T13:54:41.766Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

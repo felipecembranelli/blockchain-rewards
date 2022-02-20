@@ -28,7 +28,7 @@ export default function Products() {
 
   return (
     <Container style={{ marginTop: "40px" }}>
-      <Heading>Clothing</Heading>
+      <Heading>Your Choices</Heading>
       <Row>
         {items.map(item => (
           <ProductCard

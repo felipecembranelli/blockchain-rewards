@@ -23,6 +23,10 @@ const items = [
     src: "slider03.jpg",
     altText: "Slide 3",
   },
+  {
+    src: "slider04.jpg",
+    altText: "Slide 4",
+  },
 ]
 
 const HomeCarousel = props => {
