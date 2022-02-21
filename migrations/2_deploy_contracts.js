@@ -24,13 +24,19 @@ module.exports = async function(deployer, network, accounts) {
   //await dappToken.transfer(tokenFarm.address, '1000000000000000000000000')
 
   // Transfer 100 Mock DAI tokens to HR
+
+  console.log("Default Account:" + accounts[0])
   await daiToken.transfer(accounts[0], '100000000000000000000')
 
   // Transfer 100 pyxis tokens to account 
   //await pyxisToken.transfer(accounts[1], '100000000000000000000')
 
   // Issuing Tokens
+  console.log("Account:" + accounts[1])
+
   await daiToken.issueTokens(accounts[1], '1000000000')
+
+  console.log("Account:" + accounts[2])
   await daiToken.issueTokens(accounts[2], '1000000000')
 
   // redeem

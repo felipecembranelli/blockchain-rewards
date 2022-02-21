@@ -34,35 +34,25 @@ const NavBar = props => {
         </Link>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem>
+            {/* <NavItem>
               <Link to="/transactions" className="nav-link">
                 <Web3Wrapper />
-              </Link>
-            </NavItem>
+              </Link> 
+            </NavItem> */}
             <NavItem>
               <Link to="/issue-tokens" className="nav-link">
-                Issue Tokens
+                Admin
               </Link>
              </NavItem>
-            <NavItem>
-              <Link to="/" className="nav-link">
-                Contact
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/" className="nav-link">
-                About
-              </Link>
-            </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Options
+                Account Info
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Item 1</DropdownItem>
-                <DropdownItem>Item 2</DropdownItem>
+                <DropdownItem> <Web3Wrapper /></DropdownItem>
+                {/* <DropdownItem>Item 2</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>something else</DropdownItem>
+                <DropdownItem>something else</DropdownItem> */}
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
@@ -93,7 +83,7 @@ const NavBar = props => {
                           <td className="si-text">
                             <div className="product-selected">
                               <p>
-                                Ksh. {item.price} x {item.quantity}
+                                {item.price} x {item.quantity} CEM
                               </p>
                               <h6>{item.name}</h6>
                             </div>
@@ -119,7 +109,7 @@ const NavBar = props => {
               </div>
               <div className="select-total">
                 <span>total:</span>
-                <h5>Ksh. {props.total ? props.total : 0}</h5>
+                <h5>{props.total ? props.total : 0} CEM</h5>
               </div>
               <div className="select-button">
                 <Link to="/shoping-cart" className="primary-btn view-card">

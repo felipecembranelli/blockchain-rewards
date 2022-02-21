@@ -91,15 +91,15 @@ function Checkout(props) {
                       {props.cartItems.map(item => (
                         <li className="fw-normal" key={item.id}>
                           {item.name} x {item.quantity}{" "}
-                          <span>Ksh {item.price * item.quantity}</span>
+                          <span>{item.price * item.quantity} CEM</span>
                         </li>
                       ))}
                       <li className="total-price">
-                        Total <span>Ksh {props.total}</span>
+                        Total <span>{props.total} CEM</span>
                       </li>
                     </ul>
 
-                    <div className="mb-4 d-flex w-100 align-items-center mpesa">
+                    {/* <div className="mb-4 d-flex w-100 align-items-center mpesa">
                       <img
                         src={mpesa}
                         alt="mpesa"
@@ -110,13 +110,13 @@ function Checkout(props) {
                         placeholder="Enter Your Mpesa number"
                         className="form-control ml-3"
                       />
-                    </div>
+                    </div> */}
 
                     <Row>
                       <Col md="12">
                         <div className="order-btn">
                           <button type="submit" className="site-btn place-btn">
-                            Place Order
+                            Redeem
                           </button>
                         </div>
                       </Col>

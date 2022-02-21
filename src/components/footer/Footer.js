@@ -18,16 +18,16 @@ export default function Footer() {
               </div>
               <ul>
                 <li>
-                  <i className="fa fa-map-marker"></i> 60-49 Road 11378 Nairobi
+                  <i className="fa fa-map-marker"></i> 105 Road Summit
                 </li>
                 <li>
                   <i className="fa fa-phone"></i>{" "}
-                  <a href="tel:+254 746792699">+254 746792699</a>
+                  <a href="tel:+254 746792699">+345 746792699</a>
                 </li>
                 <li>
                   <i className="fa fa-envelope"></i>{" "}
-                  <a href="mailto:muriithijames556@gmail.com">
-                    muriithijames556@gmail.com
+                  <a href="mailto:felipecembranelli@live.com">
+                    felipecembranelli@live.com
                   </a>
                 </li>
               </ul>

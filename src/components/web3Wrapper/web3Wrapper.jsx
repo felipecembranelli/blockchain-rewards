@@ -294,7 +294,10 @@ class Web3Wrapper extends Component {
 	render() {
 	return (
 		<div>
-			<div>Account({this.getReadableAccount(this.state.defaultAccount)}) - {this.state.daiTokenBalance} mDAI</div>
+			<div>
+				Account: {this.getReadableAccount(this.state.defaultAccount)}<br/>
+				Balance: {this.state.daiTokenBalance} CEM
+			</div>
 		</div>
 	);
 	}

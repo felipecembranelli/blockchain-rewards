@@ -83,7 +83,7 @@ function ProductCard({ product, addToCart, ...props }) {
           <div className="ratings">
             <Stars rating={product.rating} />
           </div>
-          <div className="product-price">Ksh. {product.price}</div>
+          <div className="product-price">{product.price} CEM</div>
         </div>
       </div>
       <ProductSheet open={open} onChange={onClick}>
