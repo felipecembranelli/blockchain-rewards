@@ -1,44 +1,23 @@
-//const DappToken = artifacts.require('DappToken')
 const DaiToken = artifacts.require('DaiToken')
-//const TokenFarm = artifacts.require('TokenFarm')
-//const PyxisToken = artifacts.require('PyxisToken')
 
 module.exports = async function(deployer, network, accounts) {
-  // Deploy Pyxis token
-  //await deployer.deploy(PyxisToken)
-  //const pyxisToken = await PyxisToken.deployed()
 
   // Deploy Mock DAI Token
   await deployer.deploy(DaiToken)
   const daiToken = await DaiToken.deployed()
 
-  // Deploy Dapp Token
-  //await deployer.deploy(DappToken)
-  //const dappToken = await DappToken.deployed()
-
-  // Deploy TokenFarm
-  //await deployer.deploy(TokenFarm, dappToken.address, daiToken.address)
-  //const tokenFarm = await TokenFarm.deployed()
-
-  // Transfer all tokens to TokenFarm (1 million)
-  //await dappToken.transfer(tokenFarm.address, '1000000000000000000000000')
-
   // Transfer 100 Mock DAI tokens to HR
-
   console.log("Default Account:" + accounts[0])
-  await daiToken.transfer(accounts[0], '100000000000000000000')
 
-  // Transfer 100 pyxis tokens to account 
-  //await pyxisToken.transfer(accounts[1], '100000000000000000000')
+  await daiToken.transfer(accounts[0], '1000000000000000000000000')
 
-  // Issuing Tokens
-  console.log("Account:" + accounts[1])
+  // Issuing Tokens (100 COINS)
+  console.log("const account_1_address =" + accounts[1])
 
-  await daiToken.issueTokens(accounts[1], '1000000000')
+  await daiToken.issueTokens(accounts[1], '100000000000000000000')
 
-  console.log("Account:" + accounts[2])
-  await daiToken.issueTokens(accounts[2], '1000000000')
+  console.log("const account_2_address =" + accounts[2])
 
-  // redeem
-  //await daiToken.redeem(accounts[2], accounts[1], '1000000000')
+  await daiToken.issueTokens(accounts[2], '100000000000000000000')
+
 }

@@ -86,7 +86,7 @@ class Web3Wrapper extends Component {
 	*/
 	async connectWalletHandler() {
 
-		console.log("checking DAI balance");
+		console.log("checking COIN balance");
 
 		// if ((typeof address === 'undefined') || (address === null)){
 		// 	this.setError("Account address not defined.");
@@ -144,16 +144,13 @@ class Web3Wrapper extends Component {
 						
 						this.setState({ daiToken })
 
-						let daiTokenBalance = await daiToken.methods.balanceOf(this.state.defaultAccount).call()
+						let daiTokenBalanceWEI = await daiToken.methods.balanceOf(this.state.defaultAccount).call()
 
-						let daiTokenBalanceWEI = window.web3.utils.fromWei(daiTokenBalance, 'Ether');
+						let daiTokenBalance = window.web3.utils.fromWei(daiTokenBalanceWEI, 'Ether');
 
 						console.log("Calculating DAI balance:", daiTokenBalance.toString());
-						console.log("Calculating DAI balance - WEI:" + daiTokenBalanceWEI.toString())
 
-						this.setState({ daiTokenBalance: daiTokenBalanceWEI.toString() })
-
-						//console.log("Calculating DAI balance:", daiTokenBalance.toString());
+						this.setState({ daiTokenBalance: this.roundNumber(daiTokenBalance).toString() })
 
 					} 
 					else {
@@ -279,17 +276,26 @@ class Web3Wrapper extends Component {
 		window.location.reload();
 	}
 
-  getReadableAccount = (account) => {
+	roundNumber = (amount) => {
 
-    if(account !== null && account !== '') {      
-      console.log("entrou no substring")
-      console.log("account=" + account)
-      return "..." + account.substring(account.length - 4);
-    }
-    else {
-      return ""
-    }
-  }
+		if(amount !== null && amount !== '') { 
+			return Math.round(amount * 100) / 100
+		}
+		else {
+			return 0;
+		}
+	}
+
+	getReadableAccount = (account) => {
+
+		if(account !== null && account !== '') {      
+		console.log("Account Info=" + account)
+		return "..." + account.substring(account.length - 4);
+		}
+		else {
+		return "Not connected."
+		}
+	}
 	
 	render() {
 	return (

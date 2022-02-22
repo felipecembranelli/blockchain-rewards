@@ -34,16 +34,12 @@ const NavBar = props => {
         </Link>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            {/* <NavItem>
-              <Link to="/transactions" className="nav-link">
-                <Web3Wrapper />
-              </Link> 
-            </NavItem> */}
-            <NavItem>
+            {/* TO-DO: administration area
+             <NavItem>
               <Link to="/issue-tokens" className="nav-link">
                 Admin
               </Link>
-             </NavItem>
+             </NavItem> */}
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Account Info

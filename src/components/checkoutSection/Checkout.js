@@ -1,7 +1,7 @@
 import React from "react"
 import { Container, Row, Col } from "reactstrap"
 import { connect } from "react-redux"
-
+import { Link } from "gatsby"
 import emptyCartSvg from "../../images/empty_cart.svg"
 import mpesa from "../../images/mpesa.png"
 import "./Checkout.css"
@@ -75,7 +75,9 @@ function Checkout(props) {
                 let amount
                 
                 amount = props.total.toString()
-                //amount = window.web3.utils.toWei(amount, 'Ether')
+                
+                amount = window.web3.utils.toWei(amount, 'Ether')
+                
                 placeOrder(amount)
               }}>
           <Row className="justify-content-center">
@@ -133,6 +135,11 @@ function Checkout(props) {
                   <p className="text-primary mt-4">
                     Your shopping cart is empty.
                   </p>
+                  <div className="cart-buttons">
+                    <Link to="/" className="primary-btn continue-shop">
+                      Continue shopping
+                    </Link>
+                  </div>
                 </Col>
               )}
             </Col>
