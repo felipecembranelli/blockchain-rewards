@@ -4,8 +4,8 @@ import { Container, Row, Col } from "reactstrap"
 import "./Checkout.css"
 
 import Web3 from 'web3'
-import DaiToken from '../../abis/DaiToken.json'
-import {config} from '../../data/dataConfig'
+import MyToken from '../../abis/MyToken.json'
+import {config} from '../../data/defaultAccountConfig'
 
 function IssueTokens(props) {
 
@@ -42,11 +42,11 @@ function IssueTokens(props) {
 
         console.log("checkout - networkId:" + networkId)
 
-        // Load DaiToken
-//        const daiTokenData = DaiToken.networks[networkId]
+        // Load MyToken
+//        const myTokenData = MyToken.networks[networkId]
 
-        // if (daiTokenData) {
-        //   	const daiToken = new web3.eth.Contract(DaiToken.abi, daiTokenData.address)
+        // if (myTokenData) {
+        //   	const MyToken = new web3.eth.Contract(myToken.abi, myTokenData.address)
 		   
 			// TO DO:get accounts that will earn tokens and tokens qty 
 
@@ -56,13 +56,13 @@ function IssueTokens(props) {
 			// let earned_tokens_2 = '10000'
 
 			// Code goes here: logic to reward accounts...
-			//daiToken.issueTokens(account_1_address, earned_tokens_1) // TO DO: nao esta reconhecendo o metodo
+			//myToken.issueTokens(account_1_address, earned_tokens_1) // TO DO: nao esta reconhecendo o metodo
 
-			//await daiToken.issueTokens(account_2_address, earned_tokens_2)
+			//await myToken.issueTokens(account_2_address, earned_tokens_2)
 
       // let adminAccount = config.adminAccount
 
-      //   daiToken.methods.transfer(adminAccount, earned_tokens_1).send({ from: defaultAccount }).on('transactionHash', (hash) => {
+      //  myToken.methods.transfer(adminAccount, earned_tokens_1).send({ from: defaultAccount }).on('transactionHash', (hash) => {
       //     console.log("token issued")
       //   })
 
@@ -75,8 +75,8 @@ function IssueTokens(props) {
 
         //   console.log("checkout - transfer to:" + adminAccount)
 
-        //   daiToken.methods.approve(defaultAccount, amount).send({ from: defaultAccount }).on('transactionHash', (hash) => {
-        //     daiToken.methods.transfer(adminAccount, amount).send({ from: defaultAccount }).on('transactionHash', (hash) => {
+        //   MyToken.methods.approve(defaultAccount, amount).send({ from: defaultAccount }).on('transactionHash', (hash) => {
+        //     MyToken.methods.transfer(adminAccount, amount).send({ from: defaultAccount }).on('transactionHash', (hash) => {
         //       console.log("placed order")
 
         //       props.clearCart()
@@ -85,7 +85,7 @@ function IssueTokens(props) {
 
   //      } 
    //     else {
-    //      window.alert('DaiToken contract not deployed to detected network.')
+    //      window.alert('MyToken contract not deployed to detected network.')
      //   }
     } catch (error) {
       console.log(error.message)

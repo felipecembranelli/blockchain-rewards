@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import {useState} from 'react'
 //import {ethers} from 'ethers'
 import Web3 from 'web3'
-import DaiToken from '../../abis/DaiToken.json'
+import MyToken from '../../abis/MyToken.json'
 
 class UserTransactions extends Component {
 

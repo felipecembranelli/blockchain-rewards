@@ -3,12 +3,11 @@ import { Container, Row, Col } from "reactstrap"
 import { connect } from "react-redux"
 import { Link } from "gatsby"
 import emptyCartSvg from "../../images/empty_cart.svg"
-import mpesa from "../../images/mpesa.png"
 import "./Checkout.css"
 
 import Web3 from 'web3'
-import DaiToken from '../../abis/DaiToken.json'
-import {config} from '../../data/dataConfig'
+import MyToken from '../../abis/MyToken.json'
+import {config} from '../../data/defaultAccountConfig'
 import {clearCart} from "../../actions/cartActions"
 
 function Checkout(props) {
@@ -32,26 +31,26 @@ function Checkout(props) {
     
         const accounts = await web3.eth.getAccounts()
 
-        let defaultAccount = accounts[0]
+        let connectedAccount = accounts[0]
       
         const networkId = await web3.eth.net.getId()
 
         console.log("checkout - networkId:" + networkId)
 
-        // Load DaiToken
-        const daiTokenData = DaiToken.networks[networkId]
+        // Load MyToken
+        const myTokenData = MyToken.networks[networkId]
 
-        if (daiTokenData) {
-          const daiToken = new web3.eth.Contract(DaiToken.abi, daiTokenData.address)
+        if (myTokenData) {
+          const myToken = new web3.eth.Contract(MyToken.abi, myTokenData.address)
           
-          console.log("checkout - transfer:" + defaultAccount)
+          console.log("checkout - transfer:" + connectedAccount)
 
           let adminAccount = config.adminAccount
 
           console.log("checkout - transfer to:" + adminAccount)
 
-          daiToken.methods.approve(defaultAccount, amount).send({ from: defaultAccount }).on('transactionHash', (hash) => {
-            daiToken.methods.transfer(adminAccount, amount).send({ from: defaultAccount }).on('transactionHash', (hash) => {
+          myToken.methods.approve(connectedAccount, amount).send({ from: connectedAccount }).on('transactionHash', (hash) => {
+            myToken.methods.transfer(adminAccount, amount).send({ from: connectedAccount }).on('transactionHash', (hash) => {
               console.log("placed order")
 
               props.clearCart()
@@ -60,7 +59,7 @@ function Checkout(props) {
 
         } 
         else {
-          window.alert('DaiToken contract not deployed to detected network.')
+          window.alert('MyToken contract not deployed to detected network.')
         }
     } catch (error) {
       console.log(error.message)
@@ -100,20 +99,6 @@ function Checkout(props) {
                         Total <span>{props.total} CEM</span>
                       </li>
                     </ul>
-
-                    {/* <div className="mb-4 d-flex w-100 align-items-center mpesa">
-                      <img
-                        src={mpesa}
-                        alt="mpesa"
-                        className="d-none d-lg-block"
-                      />
-                      <input
-                        type="text"
-                        placeholder="Enter Your Mpesa number"
-                        className="form-control ml-3"
-                      />
-                    </div> */}
-
                     <Row>
                       <Col md="12">
                         <div className="order-btn">

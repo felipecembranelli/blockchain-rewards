@@ -1,8 +1,8 @@
 pragma solidity ^0.5.0;
 
-contract PyxisToken {
-    string  public name = "Pyxis Token";
-    string  public symbol = "PYX";
+contract MyToken {
+    string  public name = "My coin";
+    string  public symbol = "CEM";
     uint256 public totalSupply = 1000000000000000000000000; // 1 million tokens
     uint8   public decimals = 18;
 
@@ -48,4 +48,38 @@ contract PyxisToken {
         emit Transfer(_from, _to, _value);
         return true;
     }
+
+    function issueTokens(address _to, uint256 _value) public returns (bool success) {
+        require(balanceOf[msg.sender] >= _value);
+        balanceOf[msg.sender] -= _value;
+        balanceOf[_to] += _value;
+        emit Transfer(msg.sender, _to, _value);
+        return true;
+    }
+
+     function redeem(address _from, address _to, uint256 _value) public returns (bool success) {
+        require(_value <= balanceOf[_from]);
+        require(_value <= allowance[_from][msg.sender]);
+        balanceOf[_from] -= _value;
+        balanceOf[_to] += _value;
+        allowance[_from][msg.sender] -= _value;
+        emit Transfer(_from, _to, _value);
+        return true;
+    }
+
+    // // Issuing Tokens
+    // function issueTokens() public {
+    //     // Only owner can call this function
+    //     require(msg.sender == owner, "caller must be the owner");
+
+    //     // Issue tokens to all stakers
+    //     for (uint i=0; i<stakers.length; i++) {
+    //         address recipient = stakers[i];
+    //         uint balance = stakingBalance[recipient];
+    //         if(balance > 0) {
+    //             dappToken.transfer(recipient, balance);
+    //         }
+    //     }
+    // }
+
 }

@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import {useState} from 'react'
 //import {ethers} from 'ethers'
 import Web3 from 'web3'
-import DaiToken from '../../abis/DaiToken.json'
+import MyToken from '../../abis/MyToken.json'
 
 class ListAccountsBalance extends Component {
 
@@ -17,8 +17,8 @@ class ListAccountsBalance extends Component {
 			currentNetworkType: '',
 			userBalance: 0,
 			showAlert: false,
-			daiTokenBalance: '0',
-			daiToken: {},
+			MyTokenBalance: '0',
+			MyToken: {},
 		};  
 	}
 
@@ -81,27 +81,27 @@ class ListAccountsBalance extends Component {
 
 			console.log("componentWillMount - networkId:" + networkId)
 
-			const daiTokenData = DaiToken.networks[networkId]
+			const MyTokenData = MyToken.networks[networkId]
 
-			if (daiTokenData) {
-				const daiToken = new web3.eth.Contract(DaiToken.abi, daiTokenData.address)
+			if (MyTokenData) {
+				const MyToken = new web3.eth.Contract(MyToken.abi, MyTokenData.address)
 				
-				this.setState({ daiToken })
+				this.setState({ MyToken })
 
 				for (var i = 0; i < accounts.length; i++) { 
 
 					console.log("ACCOUNT :" + accounts[i])
 
-					let daiTokenBalance = await daiToken.methods.balanceOf(accounts[i]).call()
+					let MyTokenBalance = await MyToken.methods.balanceOf(accounts[i]).call()
 
-					let daiTokenBalanceWEI = window.web3.utils.fromWei(daiTokenBalance);
+					let MyTokenBalanceWEI = window.web3.utils.fromWei(MyTokenBalance);
 
-					console.log("Calculating DAI balance:", daiTokenBalance.toString());
-					console.log("Calculating DAI balance - WEI:" + daiTokenBalanceWEI.toString())
+					console.log("Calculating DAI balance:", MyTokenBalance.toString());
+					console.log("Calculating DAI balance - WEI:" + MyTokenBalanceWEI.toString())
 				}
 			} 
 			else {
-				window.alert('DaiToken contract not deployed to detected network.')
+				window.alert('MyToken contract not deployed to detected network.')
 			}
 		} catch (error) {
 			console.log(error.message)
@@ -237,7 +237,7 @@ class ListAccountsBalance extends Component {
 	return (
 		<div>
 			<div>Account({this.getReadableAccount(this.state.defaultAccount)})</div>
-			<div>{this.state.daiTokenBalanceWEI} mDAI</div>
+			<div>{this.state.MyTokenBalanceWEI} mDAI</div>
 		</div>
 	);
 	}
