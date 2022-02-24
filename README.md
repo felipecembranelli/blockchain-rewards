@@ -1,4 +1,4 @@
-# Loyalty Points with Blockchain and Etherium
+# Loyalty Points with Blockchain and Ethereum
 
 This is a sample implementation of a loyalty points system using blockchain and ethereum network, available for studying. 
 
@@ -20,7 +20,7 @@ The frontend applicatin was forked and adapted using the repository [e-shop](htt
 - [React.js](https://reactjs.org/): A framework for building user interfaces.
 - [Metamask](https://metamask.io/): A wallet for user private keys management.
 
-# 🚀 Quick start
+## 🚀 Quick start
 
 > Install
 
