@@ -35,7 +35,7 @@ To be able to run this app, you’ll need to have:
 - Ganache development blockchain.
 - Metamask chrome extension.
 
-Note that we won’t need real Ether tokens as we will be using test Ether tokens from our development blockchain (Ganache). The complete code for this guide can be found here.
+Note that we won’t need real Ether tokens as we will be using test Ether tokens from our development blockchain (Ganache).
 
 > Before you run the application
 
