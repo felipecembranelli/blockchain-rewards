@@ -4,6 +4,9 @@ This is a Dapp (decentralized application) sample implementation of a rewards sy
 
 The frontend applicatin was forked and adapted using the repository [e-shop](https://github.com/james-muriithi/e-shop).
 
+![home](/doc/home.png)
+
+![redeem](/doc/redeem.png)
 
 ## Features
 
