@@ -1,6 +1,6 @@
-# Loyalty Points with Blockchain and Ethereum
+# Dapp blockchain based rewards system with Ethereum
 
-This is a sample implementation of a loyalty points system using blockchain and ethereum network, available for studying. 
+This is a Dapp (decentralized application) sample implementation of a rewards system using blockchain and ethereum network, available for studying. 
 
 The frontend applicatin was forked and adapted using the repository [e-shop](https://github.com/james-muriithi/e-shop).
 
@@ -20,6 +20,10 @@ The frontend applicatin was forked and adapted using the repository [e-shop](htt
 - [React.js](https://reactjs.org/): A framework for building user interfaces.
 - [Metamask](https://metamask.io/): A wallet for user private keys management.
 
+## Architecture Overview
+
+![arch](/doc/arch.png)
+
 ## 🚀 Quick start
 
 > Install
@@ -37,7 +41,7 @@ Note that we won’t need real Ether tokens as we will be using test Ether token
 
 - Start your Ganache blockchain
 
-![ganache](/doc/gananche.png)
+![ganache](/doc/ganache.png)
 
 - Deploy the smartcontract
 
@@ -49,13 +53,18 @@ This contract will create the cryptocurrency (CEM) with an initial total supply 
 
 The contract will also issue tokens (100 CEM) to the first 2 users (accounts) on the Ganache blockchain. The users then can use the tokens to reedem products.
 
-![smartcontract](/doc/xxx.png) 
+![migration](/doc/migration.png) 
 
 - Setup the administrator account
 
 Update the app administrator account on the file src/data/defaultAccountConfig.js, using the first Ganache account:
 
-![ganache](/doc/gananche.png)
+```
+export const config = 
+    {
+        adminAccount: "[put here your admin account]"
+    }
+```
 
 The administrator account will be responsible for issuing tokens to the users redeem the products. 
 
@@ -63,12 +72,15 @@ The administrator account will be responsible for issuing tokens to the users re
 
 Update the user accounts on the file src/contracts/issue-token.js with the 2 first accounts on the Ganache:
 
-![users setup](/doc/x.png)
+```
+const account_1_address = "[put here your ganache account[1] ]"
+const account_2_address = "[put here your ganache account[2] ]"
+```
 
 > How to run
 
 ```
-$ git clone https://github.com/felipecembranelli/loyalty-points-evm.git
+$ git clone https://github.com/felipecembranelli/blockchain-rewards.git
 $ npm install
 $ npm start
 ```
@@ -81,10 +93,6 @@ $ npm start
 Run the following script. It is simulating the token issues that could be done automatically in a pre-defined period of time (ex: monthly):
 
 ``truffle exec ./scripts/issue-token.js``
-
-## Versions used in this demo
-
-* ??
 
 ## Licence
 
