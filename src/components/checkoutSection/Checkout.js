@@ -49,6 +49,7 @@ function Checkout(props) {
 
           console.log("checkout - transfer to:" + adminAccount)
 
+          // Redeem: transfer tokens from user to admin account
           myToken.methods.approve(connectedAccount, amount).send({ from: connectedAccount }).on('transactionHash', (hash) => {
             myToken.methods.transfer(adminAccount, amount).send({ from: connectedAccount }).on('transactionHash', (hash) => {
               console.log("placed order")

@@ -18,7 +18,6 @@ import { removeFromCart } from "../../actions/cartActions"
 
 import "./Navbar.css"
 import Web3Wrapper from "../web3Wrapper/web3Wrapper"
-import ListAccountsBalance from "../web3Wrapper/listAccountsBalance"
 
 
 const NavBar = props => {
@@ -34,21 +33,12 @@ const NavBar = props => {
         </Link>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            {/* TO-DO: administration area
-             <NavItem>
-              <Link to="/issue-tokens" className="nav-link">
-                Admin
-              </Link>
-             </NavItem> */}
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Account Info
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem> <Web3Wrapper /></DropdownItem>
-                {/* <DropdownItem>Item 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>something else</DropdownItem> */}
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>

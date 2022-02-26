@@ -14,7 +14,7 @@ The frontend applicatin was forked and adapted using the repository [e-shop](htt
 ## Stack
 
 - [Truffle](https://trufflesuite.com/): This comes with a development environment, a testing framework, and a development blockchain.
-- Solidity: used to develop the smartcontracts.
+- Solidity: used to develop the smart contracts.
 - [Web3.js](): A library for interacting with metamask and deployed smart contracts on the frontend.
 - [Ganache](https://www.trufflesuite.com/ganache): A development blockchain for deploying smart contracts and inspecting state during development,
 - [React.js](https://reactjs.org/): A framework for building user interfaces.
@@ -43,7 +43,7 @@ Note that we won’t need real Ether tokens as we will be using test Ether token
 
 ![ganache](/doc/ganache.png)
 
-- Deploy the smartcontract
+- Deploy the smart contract
 
 Go to the root folder and run:
 

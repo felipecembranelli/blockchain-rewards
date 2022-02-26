@@ -14,7 +14,6 @@ import Categories from "../components/categorySection/Categories"
 
 const IndexPage = () => (
   <Layout>
-    {/* <Web3Wrapper /> */}
     <SEO />
     <HomeCarousel />
     <Benefits />

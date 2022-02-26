@@ -24,7 +24,6 @@ class Web3Wrapper extends Component {
 	async componentDidMount() {
 
 		try {
-			//window.ethereum.on('chainChanged', this.chainChangedHandler);
 
 			window.ethereum.on('accountsChanged', this.accountChangedHandler);
 		}
