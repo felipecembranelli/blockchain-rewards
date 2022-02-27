@@ -1,7 +1,7 @@
 const MyToken = artifacts.require('MyToken')
 
-const account_1_address = "0x282675d2b78fF4E10f60589da1bAa481d95E14D4"
-const account_2_address = "0x5EeC097901bEcfe6F0013921398856E957CE42f3"
+const account_1_address = "0x3A61842f606487628e54cEba4F331D64E6D253E6"
+const account_2_address = "0x35B15A15814bdf39F896a512cB9907133155262c"
 
 // How to run:
 //  truffle exec ./scripts/issue-token.js 
