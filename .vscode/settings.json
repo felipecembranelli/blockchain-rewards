@@ -6,5 +6,8 @@
   "files.associations": {
     "*.js": "javascriptreact"
   },
-  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  "appService.showBuildDuringDeployPrompt": false,
+  "appService.defaultWebAppToDeploy": "/subscriptions/8ea345a6-d61b-43bf-bf3f-0bbcc9ab66a6/resourceGroups/rg_blockchain/providers/Microsoft.Web/sites/esho-reward-blockchain",
+  "appService.deploySubpath": "."
 }
