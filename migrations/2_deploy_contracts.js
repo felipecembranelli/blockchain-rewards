@@ -13,7 +13,9 @@ module.exports = async function(deployer, network, accounts) {
   await myToken.transfer(accounts[0], '1000000000000000000000000')
 
   ////////////////////////////////////////
-  // Partners: issuing Tokens (1000 COINS)
+  // Partners: issuing Tokens to partners (1000 COINS)
+  // but the token will not be added to the partner wallet. 
+  // It is being stored inside the smart contract
   ////////////////////////////////////////
   console.log("const partner_1_address =" + accounts[1])
 
@@ -28,10 +30,10 @@ module.exports = async function(deployer, network, accounts) {
   ////////////////////////////////////////
   console.log("const member_1_address =" + accounts[3])
 
-  await myToken.issueTokens(accounts[3], '100000000000000000000')
+  await myToken.issueTokens(accounts[3], '100000000000000000000', accounts[1])
 
   console.log("const member_2_address =" + accounts[4])
 
-  await myToken.issueTokens(accounts[4], '100000000000000000000')
+  await myToken.issueTokens(accounts[4], '100000000000000000000', accounts[2])
 
 }

@@ -64,9 +64,6 @@ function Checkout(props) {
 
               props.clearCart()
               
-
-              //let balance = myToken.methods.partnersBalance().call();
-              //console.log("balance partner=" + balance);
             })
           })
         } 

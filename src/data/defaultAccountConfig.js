@@ -1,4 +1,4 @@
 export const config = 
     {
-        adminAccount: "0x4B1A6A0eC52Ce8627aEEa7A4780D0F154Fe7e3cE"
+        adminAccount: "0x592B7F1bCD147B4e1Ea3C8601AaeB1EA1c41E372"
     }
