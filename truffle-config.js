@@ -2,7 +2,7 @@ require('babel-register');
 require('babel-polyfill');
 
 const HDWalletProvider = require('truffle-hdwallet-provider-privkey');
-const privateKey = "6409a148954c1cd73551b28104fc5e86719e9eafb5c53173dd4b9336424162f4";
+const privateKey = "  173dd4b9336424162f4";
 const endpointUrl = "https://kovan.infura.io/v3/bfb22c5059d542d5875eab79895530c8";
 
 module.exports = {
