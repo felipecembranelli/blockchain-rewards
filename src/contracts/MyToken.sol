@@ -7,8 +7,10 @@ contract MyToken {
     uint8   public decimals = 18;
 
     address[] public partners;
-    mapping(address => uint) public partnerBalance;
-    mapping(address => bool) public isRegistered;
+    mapping(address => uint) public partnerBalance;     // store partner points balance
+    mapping(address => bool) public isRegistered;       // control if partner is already registered
+    mapping(address => uint256) public balanceOf;       // control member balance
+    mapping(address => mapping(address => uint256)) public allowance;
 
     event Transfer(
         address indexed _from,
@@ -22,9 +24,7 @@ contract MyToken {
         uint256 _value
     );
 
-    mapping(address => uint256) public balanceOf;
-    mapping(address => mapping(address => uint256)) public allowance;
-
+    // define member total supply
     constructor() public {
         balanceOf[msg.sender] = totalSupply;
     }
@@ -38,6 +38,7 @@ contract MyToken {
 
     }
 
+    // Member can reedem points:
     // Update member/partners with points used
     function reedem(address _to, uint256 _value) public returns (bool success) {
         require(balanceOf[msg.sender] >= _value);
@@ -58,12 +59,14 @@ contract MyToken {
         emit Transfer(msg.sender, _to, _value);
     }
 
+    // Member should approve the transaction
     function approve(address _spender, uint256 _value) public returns (bool success) {
         allowance[msg.sender][_spender] = _value;
         emit Approval(msg.sender, _spender, _value);
         return true;
     }
 
+    // Transfer funds from / to
     function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
         require(_value <= balanceOf[_from]);
         require(_value <= allowance[_from][msg.sender]);

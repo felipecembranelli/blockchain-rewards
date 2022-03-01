@@ -26,7 +26,7 @@ module.exports = async function(deployer, network, accounts) {
   await myToken.registerPartner(accounts[2], '1000000000000000000000')
 
   ////////////////////////////////////////
-  // Members: issuing Tokens (100 COINS)
+  // Members: simulate initial earning process (100 COINS)
   ////////////////////////////////////////
   console.log("const member_1_address =" + accounts[3])
 
