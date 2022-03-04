@@ -12,20 +12,20 @@ import Image from "./SliderImage"
 
 const items = [
   {
-    src: "slider01.jpg",
+    src: "banner_bees.jpg",
     altText: "Slide 1",
   },
   {
-    src: "slider02.jpg",
+    src: "banner_bees1.jpg",
     altText: "Slide 2",
   },
   {
-    src: "slider03.jpg",
+    src: "banner_bees2.jpg",
     altText: "Slide 3",
   },
   {
-    src: "slider04.jpg",
-    altText: "Slide 4",
+    src: "banner_bees3.jpg",
+    altText: "Slide 3",
   },
 ]
 

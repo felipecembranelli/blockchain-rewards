@@ -9,25 +9,25 @@ export default function Categories() {
         <Row>
           <Col lg="4">
             <div className="single-banner">
-              <img src={require("../../images/banner-1.jpg")} alt="" />
+              <img src={require("../../images/banner_bees1.jpg")} alt="" />
               <div className="inner-text">
-                <h4>Dinning</h4>
+                <h4>Draft</h4>
               </div>
             </div>
           </Col>
           <Col lg="4">
             <div className="single-banner">
-              <img src={require("../../images/banner-2.jpeg")} alt="" />
+              <img src={require("../../images/banner_bees1.jpg")} alt="" />
               <div className="inner-text">
-                <h4>Travel</h4>
+                <h4>IPA</h4>
               </div>
             </div>
           </Col>
           <Col lg="4">
             <div className="single-banner">
-              <img src={require("../../images/banner-3.jpg")} alt="" />
+              <img src={require("../../images/banner_bees1.jpg")} alt="" />
               <div className="inner-text">
-                <h4>Gift Cards</h4>
+                <h4>Pale Ale</h4>
               </div>
             </div>
           </Col>

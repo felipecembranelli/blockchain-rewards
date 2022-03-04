@@ -1,6 +1,6 @@
 export const items = [
     {
-        src: require("../images/products/experience-3.jpeg"),
+        src: require("../images/products/beer1.jpeg"),
         name: "Experience",
         id: 1,
         price: 3000,
@@ -9,7 +9,7 @@ export const items = [
         sizes: [],
      },
     {
-        src: require("../images/products/dinning-1.jpeg"),
+        src: require("../images/products/beer2.jpeg"),
         name: "Dinning",
         id: 2,
         price: 1000,
@@ -18,7 +18,7 @@ export const items = [
         sizes: [],
     },
     {
-        src: require("../images/products/travel.jpg"),
+        src: require("../images/products/beer3.jpeg"),
         name: "Travel",
         id: 3,
         price: 5000,
@@ -27,7 +27,7 @@ export const items = [
         sizes: [ "xxl", "xl", "l" ],
     },
     {
-        src: require("../images/products/gift-1.png"),
+        src: require("../images/products/beer4.jpeg"),
         name: "Gift Card",
         id: 4,
         price: 60,
@@ -37,7 +37,7 @@ export const items = [
     },
    
     {
-        src: require("../images/products/eletr-1.jpeg"),
+        src: require("../images/products/beer5.jpeg"),
         name: "Eletronic 1",
         id: 5,
         price: 550,
@@ -47,7 +47,7 @@ export const items = [
     },
     
     {
-        src: require("../images/products/eletr-3.jpeg"),
+        src: require("../images/products/beer6.jpeg"),
         name: "Eletronic 2",
         id: 6,
         price: 1000,
@@ -56,7 +56,7 @@ export const items = [
         sizes: [],
      },
      {
-        src: require("../images/products/eletr-2.jpeg"),
+        src: require("../images/products/beer7.jpeg"),
         name: "Eletronic 3",
         id: 7,
         price: 100,
@@ -65,7 +65,7 @@ export const items = [
         sizes: [],
      },
      {
-        src: require("../images/products/eletr-1.jpeg"),
+        src: require("../images/products/beer8.jpeg"),
         name: "Eletronic 4",
         id: 8,
         price: 140,
@@ -77,7 +77,7 @@ export const items = [
 
 export const recommendedItems = [
     {
-        src: require("../images/products/product-7.jpg"),
+        src: require("../images/products/beer9.jpeg"),
         name: "Sweater",
         id: 1,
         price: 1000,
@@ -86,7 +86,7 @@ export const recommendedItems = [
         sizes: [ "xxl", "xxl", "xl" ],
     },
     {
-        src: require("../images/products/product-8.jpg"),
+        src: require("../images/products/beer10.jpeg"),
         name: "Sweater",
         id: 2,
         price: 700,

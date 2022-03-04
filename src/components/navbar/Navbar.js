@@ -27,14 +27,14 @@ const NavBar = props => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md" fixed="top">
-        <Link to="/" className="navbar-brand">
+      <Navbar expand="md" fixed="top" style={{ 'background-color':"yellow", 'color': "black"}}>
+        <Link to="/" className="navbar-brand" style={{ 'color': "black"}}>
           <span>e</span>-shop
         </Link>
-        <Collapse isOpen={isOpen} navbar>
+        <Collapse isOpen={isOpen} navbar style={{ 'color': "black"}}>
           <Nav className="ml-auto" navbar>
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
+              <DropdownToggle nav caret style={{ 'color': "black"}}>
                 Account Info
               </DropdownToggle>
               <DropdownMenu right>
@@ -43,7 +43,7 @@ const NavBar = props => {
             </UncontrolledDropdown>
           </Nav>
         </Collapse>
-        <div className="header__cart d-flex ml-auto">
+        <div className="header__cart d-flex ml-auto" style={{ 'color': "black"}}>
           <Link to="#" className="nav-link" aria-label="view wishlist">
             <i className="fa fa-heart"></i>
             {props.wishlistItems.length > 0 && <span className="number">{props.wishlistItems.length}</span>}

@@ -74,7 +74,7 @@ export default function Footer() {
               </p>
               <form action="#" className="subscribe-form">
                 <input type="email" placeholder="Enter Your Mail" />
-                <button className="btn">Subscribe</button>
+                <button className="btn" style={{ 'color': "white", 'background-color': "black"}} >Subscribe</button>
               </form>
             </div>
           </Col>
