@@ -12,7 +12,7 @@ import Image from "./SliderImage"
 
 const items = [
   {
-    src: "banner_bees.jpg",
+    src: "banner-1.jpg",
     altText: "Slide 1",
   },
   {
