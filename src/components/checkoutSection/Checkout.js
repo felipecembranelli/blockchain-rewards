@@ -112,7 +112,7 @@ function Checkout(props) {
                       <Col md="12">
                         <div className="order-btn">
                           <button type="submit" className="site-btn place-btn">
-                            Redeem
+                            Place Order
                           </button>
                         </div>
                       </Col>

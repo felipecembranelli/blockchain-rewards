@@ -47,7 +47,7 @@ function ProductCard({ product, addToCart, ...props }) {
             src="https://res.cloudinary.com/james-m/image/upload/a_hflip,c_pad,h_303,w_270/v1594207296/1612585_j6ym3x.webp"
             className="lazyload"
             //style={{ "width": "50px", "max-height": "129px" }}
-            style={{ "max-height": "129px" }}
+            //style={{ "max-height": "129px" }}
           />
           {product.label && <div className="sale">{product.label}</div>}
           <div className="icon like">

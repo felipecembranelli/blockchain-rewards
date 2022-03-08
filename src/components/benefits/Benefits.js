@@ -13,8 +13,8 @@ export default function Benefits() {
               <img src={require("../../images/icons/icon-3.png")} alt="" />
             </div>
             <div className="sb-text">
-              <h6>Redeem</h6>
-              <p>Redeem using your coins</p>
+              <h6>Buy</h6>
+              <p>Pay using your coins</p>
             </div>
           </div>
         </Col>
@@ -36,7 +36,7 @@ export default function Benefits() {
             </div>
             <div className="sb-text">
               <h6>It's fast!</h6>
-              <p>Fast redeem using smart contracts</p>
+              <p>Place order using smart contracts</p>
             </div>
           </div>
         </Col>

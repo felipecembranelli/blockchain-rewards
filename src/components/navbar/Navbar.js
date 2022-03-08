@@ -29,7 +29,7 @@ const NavBar = props => {
     <div>
       <Navbar expand="md" fixed="top" style={{ 'background-color':"yellow", 'color': "black"}}>
         <Link to="/" className="navbar-brand" style={{ 'color': "black"}}>
-          <span>e</span>-shop
+          <span>Hornet</span>-Criptoshop
         </Link>
         <Collapse isOpen={isOpen} navbar style={{ 'color': "black"}}>
           <Nav className="ml-auto" navbar>

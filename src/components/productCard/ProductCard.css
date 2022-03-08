@@ -16,8 +16,13 @@
     position: relative;
 }
 
-.product-item .pi-pic img {
+/* .product-item .pi-pic img {
     min-width: 100%;
+} */
+
+.product-item .pi-pic img {
+    width: 155px;
+    height: 155px;
 }
 
 .product-item .pi-pic .sale {

@@ -1,7 +1,7 @@
 export const items = [
     {
         src: require("../images/products/beer1.jpeg"),
-        name: "Experience",
+        name: "Firewalker",
         id: 1,
         price: 3000,
         color: "",
@@ -10,7 +10,7 @@ export const items = [
      },
     {
         src: require("../images/products/beer2.jpeg"),
-        name: "Dinning",
+        name: "Stella Artois",
         id: 2,
         price: 1000,
         color: "",
@@ -19,7 +19,7 @@ export const items = [
     },
     {
         src: require("../images/products/beer3.jpeg"),
-        name: "Travel",
+        name: "Corona",
         id: 3,
         price: 5000,
         color: "yellow and white",
@@ -28,7 +28,7 @@ export const items = [
     },
     {
         src: require("../images/products/beer4.jpeg"),
-        name: "Gift Card",
+        name: "Budlight",
         id: 4,
         price: 60,
         color: "yellow and white",
@@ -38,7 +38,7 @@ export const items = [
    
     {
         src: require("../images/products/beer5.jpeg"),
-        name: "Eletronic 1",
+        name: "Budweiser",
         id: 5,
         price: 550,
         color: "yellow and white",
@@ -48,7 +48,7 @@ export const items = [
     
     {
         src: require("../images/products/beer6.jpeg"),
-        name: "Eletronic 2",
+        name: "Bush",
         id: 6,
         price: 1000,
         color: "",
@@ -57,7 +57,7 @@ export const items = [
      },
      {
         src: require("../images/products/beer7.jpeg"),
-        name: "Eletronic 3",
+        name: "Point IPA",
         id: 7,
         price: 100,
         color: "",
@@ -66,7 +66,7 @@ export const items = [
      },
      {
         src: require("../images/products/beer8.jpeg"),
-        name: "Eletronic 4",
+        name: "Ultra",
         id: 8,
         price: 140,
         color: "",
@@ -78,7 +78,7 @@ export const items = [
 export const recommendedItems = [
     {
         src: require("../images/products/beer9.jpeg"),
-        name: "Sweater",
+        name: "Budweiser",
         id: 1,
         price: 1000,
         description: "A sweater that keeps you warm.",
@@ -87,7 +87,7 @@ export const recommendedItems = [
     },
     {
         src: require("../images/products/beer10.jpeg"),
-        name: "Sweater",
+        name: "Budweiser Can",
         id: 2,
         price: 700,
         color: "grey",
@@ -95,8 +95,8 @@ export const recommendedItems = [
         sizes: [ "xxl", "xxl", "xl" ],
     },
     {
-        src: require("../images/products/product-9.jpg"),
-        name: "Jacket",
+        src: require("../images/products/beer1.jpeg"),
+        name: "Firewalker",
         id: 3,
         price: 1500,
         color: "light green",
@@ -104,8 +104,8 @@ export const recommendedItems = [
         sizes: [ "xxl", "xxl", "xl" ],
     },
     {
-        src: require("../images/products/man-4.jpg"),
-        name: "Scarf",
+        src: require("../images/products/beer7.jpeg"),
+        name: "Point and Wolf IPA",
         id: 4,
         price: 600,
         color: "light green",
@@ -113,8 +113,8 @@ export const recommendedItems = [
         sizes: [ "xxl", "xxl", "xl" ],
     },
     {
-        src: require("../images/products/women-4.jpg"),
-        name: "Cape",
+        src: require("../images/products/beer2.jpeg"),
+        name: "Stella Artois",
         id: 5,
         color: "yellow",
         price: 300,
@@ -122,8 +122,8 @@ export const recommendedItems = [
         sizes: [ "xxl", "xxl", "xl" ],
     },
     {
-        src: require("../images/products/product-10.jpg"),
-        name: "Sneakers",
+        src: require("../images/products/beer3.jpeg"),
+        name: "Corona",
         id: 6,
         price: 1000,
         color: "yellow and white",
